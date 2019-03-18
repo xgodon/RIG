@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+        dokuwiki:
+                container_name: dokuwiki
+                image: mprasil/dokuwiki
+                networks:
+                        - nginx-proxy
+                ports:
+                        - 8003:80
+                restart: unless-stopped
+                environment:
+                        VIRTUAL_HOST: ${HOST}
+                        LETSENCRYPT_HOST: ${HOST}
+                        LETSENCRYPT_EMAIL: ${EMAIL}
+                volumes:
+                        - dokuwiki_data:/dokuwiki/data
+                        - dokuwiki_conf:/dokuwiki/conf
+                        - dokuwiki_plugins:/dokuwiki/lib/plugins
+                        - dokuwiki_tpl:/dokuwiki/lib/tpl
+                        - dokuwiki_logs:/var/log
+networks:
+        nginx-proxy:
+                external: true
+volumes:
+        dokuwiki_data:
+        dokuwiki_conf:
+        dokuwiki_plugins:
+        dokuwiki_tpl:
+        dokuwiki_logs:

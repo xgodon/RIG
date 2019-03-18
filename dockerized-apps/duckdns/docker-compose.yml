@@ -1,0 +1,10 @@
+version: "3"
+services:
+    duckdns:
+      image: linuxserver/duckdns
+      container_name: duckdns
+      environment:
+        SUBDOMAINS: ${HOST}
+        TOKEN: ${TOKEN}
+        TZ: Europe/Paris
+      restart: always

@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+
+  app1:
+    depends_on:
+      - db
+    image: 
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8005:80
+    environment:
+      VIRTUAL_HOST: ${HOST}
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: ${EMAIL}
+
+    networks:
+      - nginx-proxy
+    links:
+      - db
+    volumes:
+      - data:/var/www/html
+    
+volumes:
+        data:
+
+
+networks:
+        nginx-proxy:
+                external: true
+

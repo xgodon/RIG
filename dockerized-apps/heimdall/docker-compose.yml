@@ -1,0 +1,28 @@
+version: "3"
+services:
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=America/Toronto
+      #- TZ=Europe/London
+      - VIRTUAL_HOST=${HOST}
+      - LETSENCRYPT_HOST=${HOST}
+      - LETSENCRYPT_EMAIL={EMAIL}
+      - VIRTUAL_PORT=443
+      - VIRTUAL_PROTO=https
+    volumes:
+      - config:/config
+    networks:
+      - nginx-proxy
+    ports:
+      - 8005:443
+    restart: unless-stopped
+volumes:
+    config:
+    
+networks:
+        nginx-proxy:
+                external: true

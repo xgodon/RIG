@@ -1,0 +1,31 @@
+version: '3'
+services:
+        ampache:
+                image: ampache/ampache
+                container_name: ampache
+                environment:
+                        VIRTUAL_HOST: ${HOST}
+                        LETSENCRYPT_HOST: ${HOST}
+                        LETSENCRYPT_EMAIL: ${EMAIL}
+
+                ports:
+                        - "8001:80"
+                restart: unless-stopped
+                volumes:
+                        - ${HOME}/music/:/media:ro
+                        - config:/var/www/config
+                        - themes:/var/www/themes
+                        - mysql_config:/etc/mysql
+                        - mysql_data:/var/lib/mysql
+                networks:
+                        - nginx-proxy
+
+networks:
+        nginx-proxy:
+                external: true
+
+volumes:
+        config:
+        themes:
+        mysql_config:
+        mysql_data:

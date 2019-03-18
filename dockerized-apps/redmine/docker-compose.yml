@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+        redmine:
+                container_name: redmine
+                image: redmine
+                networks:
+                        - nginx-proxy
+                ports:
+                        - 8002:3000
+                restart: always
+                environment:
+                        VIRTUAL_HOST: ${HOST}
+                        LETSENCRYPT_HOST: ${HOST}
+                        LETSENCRYPT_EMAIL: ${EMAIL}
+networks:
+        nginx-proxy:
+                external: true

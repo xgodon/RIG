@@ -1,0 +1,11 @@
+version: '3'
+services:
+  ss5:
+    image: dijedodol/simple-socks5-server:latest
+    container_name: proxy
+    ports:
+      - '${PORT}:1080'
+    environment:
+      - SSS_USERNAME=${USERNAME}
+      - SSS_PASSWORD=${PASSWORD}
+    restart: unless-stopped

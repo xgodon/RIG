@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+
+  app:
+    container_name: wordpress
+    depends_on:
+      - db
+    image: wordpress_mail:1.0
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8004:80
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PWD}
+      VIRTUAL_HOST: ${HOST}
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: ${MY_EMAIL}
+
+
+    networks:
+      - nginx-proxy
+    links:
+      - db
+    volumes:
+      - wp_data:/var/www/html
+
+  db:
+     container_name: wordpress_db
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: unless-stopped
+     environment:
+       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: ${DB_USER}
+       MYSQL_PASSWORD: ${DB_PWD}
+
+     networks:
+       - nginx-proxy
+networks:
+        nginx-proxy:
+                external: true
+volumes:
+        wp_data:
+        db_data:

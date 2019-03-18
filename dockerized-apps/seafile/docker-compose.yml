@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  app:
+    image: seafileltd/seafile:latest
+    container_name: seafile 
+    restart: unless-stopped
+    ports:
+      - 8007:80
+    environment:
+      VIRTUAL_HOST: ${HOST}
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: ${EMAIL}
+      SEAFILE_SERVER_HOSTNAME: ${HOST}
+      SEAFILE_ADMIN_EMAIL: ${EMAIL}
+      SEAFILE_ADMIN_PASSWORD: ${PASSWORD}
+    networks:
+      - nginx-proxy
+    volumes:
+      - data:/shared
+    
+volumes:
+        data:
+
+
+networks:
+        nginx-proxy:
+                external: true
+
