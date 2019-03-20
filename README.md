@@ -6,7 +6,18 @@ RIG is a **set of docker-compose.yml** of services destined to people interested
 
 It also provides a **saving script** that saves all named volumes declared in your docker-compose.yml files, using rsync. The script stop and restart your applications if they are running.
 
-the following applications are supported :
+To run an application for the first time :
+
+```
+#go in its directory
+cd RIG/dokuwiki 
+cp exemple.env .env
+#edit the env file to set the different variables
+nano .env
+docker-compose up -d
+```
+
+the following applications are proposed :
 
 - ampache (audio streaming)
 - dokuwiki (wiki)
@@ -21,6 +32,9 @@ the following applications are supported :
 - simple-socks5-server (socks5 proxy)
 - wordpress
 
+NOTE : openVPN, simple-socks5-server and go-socks5-proxy are not being served by the reverse proxy
+
+
 TO COME SOON : 
 - torrent.csv 
 
@@ -32,51 +46,62 @@ TODO :
 i suggest the following : 
 https://cockpit-project.org/
 
+you can follow this tutorial https://www.linux.com/learn/intro-to-linux/2017/3/make-container-management-easy-cockpit
+
 ## ampache
 
 repo :  https://github.com/ampache/ampache-docker
 
 ## dokuwiki
 
-repo :  
+image :  https://hub.docker.com/r/mprasil/dokuwiki/
 
 ## duckDNS
 
-repo :  https://github.com/coppit/docker-duckdns
+image :  https://github.com/coppit/docker-duckdns
 
 ## go-socks5-proxy
 
-repo :  
+image :  https://hub.docker.com/r/serjs/go-socks5-proxy/
 
 ## heimdal 
 
-repo :  
+image :  https://github.com/linuxserver/Heimdall
 
 ## nextcloud
 
-repo :  
+image :  https://github.com/nextcloud/docker
 
 ## nginx + letsencrypt + dockergen
 
-repo :  
-
+images :  
+  - nginx
+  - jwilder/docker-gen
+  - jrcs/letsencrypt-nginx-proxy-companion
+  
+  
 ## openVPN
 
-container repo :  
+image : https://github.com/kylemanna/docker-openvpn
+
 see https://github.com/kylemanna/docker-openvpn/blob/master/docs/docker-compose.md for detailed instructions
 
 
 ## redmine
 
-repo :  
+image :  https://hub.docker.com/_/redmine/
 
 ## seafile
 
-repo :  
+image :  https://hub.docker.com/r/seafileltd/seafile
+
 run init.sh after the settup of your .env 
 
 ## simple-socks5-server
 
+image : https://hub.docker.com/r/dijedodol/simple-socks5-server/
+
 ## wordpress
 
+image : WIP
 
