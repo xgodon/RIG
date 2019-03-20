@@ -56,7 +56,6 @@ you can follow this tutorial https://www.linux.com/learn/intro-to-linux/2017/3/m
 ### ampache
 
 ```
-#go in its directory
 cd RIG/ampache 
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -69,7 +68,6 @@ repo :  https://github.com/ampache/ampache-docker
 ### dokuwiki
 
 ```
-#go in its directory
 cd RIG/dokuwiki 
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -83,7 +81,6 @@ image :  https://hub.docker.com/r/mprasil/dokuwiki/
 ### duckDNS
 
 ```
-#go in its directory
 cd RIG/duckdns 
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -96,7 +93,6 @@ image :  https://github.com/coppit/docker-duckdns
 ### go-socks5-proxy
 
 ```
-#go in its directory
 cd RIG/go-socks5-proxy
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -109,7 +105,6 @@ image :  https://hub.docker.com/r/serjs/go-socks5-proxy/
 ### heimdal 
 
 ```
-#go in its directory
 cd RIG/heimdal
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -122,7 +117,6 @@ image :  https://github.com/linuxserver/Heimdall
 ### nextcloud
 
 ```
-#go in its directory
 cd RIG/nextcloud
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -159,7 +153,6 @@ see https://github.com/kylemanna/docker-openvpn/blob/master/docs/docker-compose.
 
 
 ```
-#go in its directory
 cd RIG/redmine
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -172,7 +165,6 @@ image :  https://hub.docker.com/_/redmine/
 ## seafile
 
 ```
-#go in its directory
 cd RIG/seafile
 cp exemple.env .env
 #edit the env file to set the different variables
@@ -187,7 +179,6 @@ image :  https://hub.docker.com/r/seafileltd/seafile
 
 
 ```
-#go in its directory
 cd RIG/simple-socks5-server
 cp exemple.env .env
 #edit the env file to set the different variables
