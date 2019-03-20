@@ -41,38 +41,51 @@ TO COME SOON :
 TODO : 
 - remove all latest tag for named tags
 
-# Supervision of the containers
+## BACKUPS
+
+- place yourself in the "RIG" directory
+- run :
+
+```
+sudo tools/save_apps.sh
+```
+It will save in all named volumes declared in "./dockerized-apps" from "/var/lib/docker/volumes" to "/backups/manual/volumes"
+you can easily change source and destination folder in the beginning of the script and run this with a cron job 
+
+## Supervision of the containers
 
 i suggest the following : 
 https://cockpit-project.org/
 
 you can follow this tutorial https://www.linux.com/learn/intro-to-linux/2017/3/make-container-management-easy-cockpit
 
-## ampache
+## Description and particularities
+
+### ampache
 
 repo :  https://github.com/ampache/ampache-docker
 
-## dokuwiki
+### dokuwiki
 
 image :  https://hub.docker.com/r/mprasil/dokuwiki/
 
-## duckDNS
+### duckDNS
 
 image :  https://github.com/coppit/docker-duckdns
 
-## go-socks5-proxy
+### go-socks5-proxy
 
 image :  https://hub.docker.com/r/serjs/go-socks5-proxy/
 
-## heimdal 
+### heimdal 
 
 image :  https://github.com/linuxserver/Heimdall
 
-## nextcloud
+### nextcloud
 
 image :  https://github.com/nextcloud/docker
 
-## nginx + letsencrypt + dockergen
+### nginx + letsencrypt + dockergen
 
 images :  
   - nginx
@@ -80,14 +93,14 @@ images :
   - jrcs/letsencrypt-nginx-proxy-companion
   
   
-## openVPN
+### openVPN
 
 image : https://github.com/kylemanna/docker-openvpn
 
 see https://github.com/kylemanna/docker-openvpn/blob/master/docs/docker-compose.md for detailed instructions
 
 
-## redmine
+### redmine
 
 image :  https://hub.docker.com/_/redmine/
 
@@ -97,11 +110,11 @@ image :  https://hub.docker.com/r/seafileltd/seafile
 
 run init.sh after the settup of your .env 
 
-## simple-socks5-server
+### simple-socks5-server
 
 image : https://hub.docker.com/r/dijedodol/simple-socks5-server/
 
-## wordpress
+### wordpress
 
 image : WIP
 
