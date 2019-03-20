@@ -9,10 +9,10 @@ services:
     volumes:
       - db:/var/lib/mysql
     environment:
-            MYSQL_ROOT_PASSWORD: ${pass1}
-            MYSQL_PASSWORD: ${pass2}
-            MYSQL_DATABASE: ${pass3}
-            MYSQL_USER: ${pass4}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PWD}
+            MYSQL_PASSWORD: ${MYSQL_USER_PWD}
+            MYSQL_DATABASE: ${MYSQL_DB}
+            MYSQL_USER: ${MYSQL_USER}
     networks:
       - nginx-proxy
 

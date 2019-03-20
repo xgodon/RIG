@@ -50,7 +50,9 @@ for D in ${APPS_DIR}/*/; do
 		for i in "${VOLUMES[@]}"
 		do
 			SOURCE=$(echo "$vol_path/${FOLDER}_$i" | tr '[:upper:]' '[:lower:]')
-			printf "\n\t backup of $SOURCE to $DESTINATION"
+			if [ -d "$SOURCE" ]; then
+				printf "\n\t backup of $SOURCE to $DESTINATION"
+			fi
 			#back data locally with rsync
 			rsync -avq --delete $SOURCE $DESTINATION
 
