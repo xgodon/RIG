@@ -23,6 +23,7 @@ the following applications are proposed :
 - wordpress
 
 NOTE : openVPN, simple-socks5-server and go-socks5-proxy are not being served by the reverse proxy
+
 NOTE2 : nginx uses TCP so you can setup openVPN on the same port because it uses UDP by default, this is usefull for port 80/443
 
 
@@ -30,7 +31,7 @@ TO COME SOON :
 - torrent.csv 
 
 TODO : 
-- remove all latest tag for named tags
+- remove all latest tag for named tags, cf : https://vsupalov.com/docker-latest-tag/
 
 ## BACKUPS
 
