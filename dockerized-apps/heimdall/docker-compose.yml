@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 volumes:
     config:
-    
+
 networks:
         nginx-proxy:
                 external: true

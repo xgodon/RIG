@@ -1,3 +1,4 @@
 *.env
 *.ovpn
-torrent.csv/ 
+torrent.csv/
+*.swp 

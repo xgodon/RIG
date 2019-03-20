@@ -1,12 +1,17 @@
 #!/bin/bash
 
+DESTINATION="${1-/backups/manual/volumes}"
 vol_path="/var/lib/docker/volumes"
+BASE_DIR=$(pwd)
+APPS_DIR="./dockerized-apps"
 
+
+mkdir -p $DESTINATION
 #for each service
-for D in ./dockerized-apps/*/; do
+for D in ${APPS_DIR}/*/; do
 
 	FOLDER=$(basename $D) 
-	echo "${D}"   # your processing here
+	echo "Service : $FOLDER" 
 
 	#go in folder
 	cd ${D}
@@ -30,20 +35,35 @@ for D in ./dockerized-apps/*/; do
 
 	#if there is folders to backup
 	if [ ${#VOLUMES[@]} -ne 0 ]; then
-		#stop service
-		#docker-compose stop
+		#check if service is running,
+		#if no the service won't be restarted
+		is_up=$(docker-compose ps | grep "Up")
+		if [ -n "$is_up" ]
+		then
+			#printf "\tstopping service"
+			docker-compose stop
+		else
+			printf "\tservice isn't running"
+		fi
 
 		#for each volume
 		for i in "${VOLUMES[@]}"
 		do
-			echo "backup of $vol_path/${FOLDER}_$i"
+			SOURCE=$(echo "$vol_path/${FOLDER}_$i" | tr '[:upper:]' '[:lower:]')
+			printf "\n\t backup of $SOURCE to $DESTINATION"
 			#back data locally with rsync
+			rsync -avq --delete $SOURCE $DESTINATION
 
 		done
-		#restarting service
-		#docker-compose start	
+		#if the service was running, restart it
+		if [ -n "$is_up" ]
+		then
+			printf "\trestarting service"
+			docker-compose start	
+		fi
 	fi
-	cd ../..
+	cd $BASE_DIR
+	printf "\n\n"
 
 done
 

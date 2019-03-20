@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Enter username"  username
+read -p "Enter username"  CLIENTNAME
 
 while true; do
     read -p "with a passphrase (recommended)" yn
