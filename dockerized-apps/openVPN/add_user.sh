@@ -3,7 +3,7 @@
 read -p "Enter username"  CLIENTNAME
 
 while true; do
-    read -p "with a passphrase (recommended)" yn
+    read -p "generate with a passphrase (recommended) y or n" yn
     case $yn in
         [Yy]* ) docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME; break;;
         [Nn]* ) docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME nopass; break;;
