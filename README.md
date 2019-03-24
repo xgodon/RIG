@@ -53,6 +53,21 @@ you can follow this tutorial https://www.linux.com/learn/intro-to-linux/2017/3/m
 
 ## Running containers
 
+### nginx + letsencrypt + dockergen
+
+```
+docker network create --subnet=172.28.0.0/16 --opt com.docker.network.bridge.name=nginx-proxy nginx-proxy                                                                                                                             docker-compose up -d 
+```
+(or just run install.sh)
+
+based on : https://raw.githubusercontent.com/ekkis/nginx-proxy-LE-docker-compose/master/docker-compose.yml
+
+images :  
+  - nginx
+  - jwilder/docker-gen
+  - jrcs/letsencrypt-nginx-proxy-companion
+  
+  
 ### ampache
 
 ```
@@ -125,19 +140,6 @@ docker-compose up -d
 ```
 
 image :  https://github.com/nextcloud/docker
-
-### nginx + letsencrypt + dockergen
-
-```
-docker network create --subnet=172.28.0.0/16 --opt com.docker.network.bridge.name=nginx-proxy nginx-proxy                                                                                                                             docker-compose up -d 
-```
-(or just run install.sh)
-
-based on : https://raw.githubusercontent.com/ekkis/nginx-proxy-LE-docker-compose/master/docker-compose.yml
-images :  
-  - nginx
-  - jwilder/docker-gen
-  - jrcs/letsencrypt-nginx-proxy-companion
   
   
 ### openVPN
