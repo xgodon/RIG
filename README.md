@@ -51,7 +51,7 @@ https://cockpit-project.org/
 
 you can follow this tutorial https://www.linux.com/learn/intro-to-linux/2017/3/make-container-management-easy-cockpit
 
-## Description and particularities
+## Running containers
 
 ### ampache
 
@@ -171,6 +171,10 @@ cp exemple.env .env
 vi .env
 init.sh
 docker-compose up -d
+#you will have to edit a conf file
+docker exec -it seafile bash
+vi conf/seahub_settings.py
+#replace the http by https in the FILE_SERVER_ROOT var
 ```
 
 image :  https://hub.docker.com/r/seafileltd/seafile
