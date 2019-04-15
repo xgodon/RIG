@@ -54,9 +54,9 @@ then
 fi
 
 mkdir "./$da/$NAME"
-cp ./exemple-compose.yml "./$da/$NAME/docker-compose.yml"
+cp ./tools/exemple-compose.yml "./$da/$NAME/docker-compose.yml"
 
-cp ./default.env "./$da/$NAME/.env"
+cp .env "./$da/$NAME/.env"
 for ENV in $ENVS;
 do
  echo "$ENV=" >> "./$da/$NAME/.env"

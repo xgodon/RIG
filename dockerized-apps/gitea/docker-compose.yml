@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+  web:
+    container_name: git
+    image: gitea/gitea:1.7.1
+    volumes:
+      - data:/data
+    ports:
+      - "8008:3000"
+      - "${PORT}:22"
+    depends_on:
+      - db
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: ${HOST}
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: ${EMAIL}
+      VIRTUAL_PORT: 3000
+    networks:
+      - nginx-proxy
+  db:
+    image: mariadb:10.4.4
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - db/:/var/lib/mysql
+
+    networks:
+      - nginx-proxy
+    
+volumes:
+        data:
+        db:
+
+
+networks:
+        nginx-proxy:
+                external: true
+

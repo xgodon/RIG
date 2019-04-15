@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+        blog:
+                container_name: blog
+                image: blog:1.0
+                build: .
+                networks:
+                        - nginx-proxy
+                ports:
+                        - 8009:80
+                restart: unless-stopped
+                environment:
+                        VIRTUAL_HOST: ${HOST}
+                        LETSENCRYPT_HOST: ${HOST}
+                        LETSENCRYPT_EMAIL: ${EMAIL}
+                volumes:
+                        - from_seafile:/usr/share/nginx/html/from_seafile
+networks:
+        nginx-proxy:
+                external: true
+
+volumes:
+  from_seafile:
+    external: true

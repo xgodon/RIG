@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   app:
-    image: seafileltd/seafile:latest
+    image: seafileltd/seafile:6.3.4
     container_name: seafile 
     restart: unless-stopped
     ports:
