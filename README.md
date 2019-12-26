@@ -12,8 +12,10 @@ the following applications are proposed :
 - ampache (audio streaming)
 - dokuwiki (wiki)
 - duckDNS (free dynamic DNS)
+- gitea
 - go-socks5-proxy (socks5 proxy)
 - heimdal 
+- jekyll
 - nextcloud
 - nginx + letsencrypt + dockergen (mandatory for HTTPS)
 - openVPN
@@ -56,7 +58,8 @@ you can follow this tutorial https://www.linux.com/learn/intro-to-linux/2017/3/m
 ### nginx + letsencrypt + dockergen
 
 ```
-docker network create --subnet=172.28.0.0/16 --opt com.docker.network.bridge.name=nginx-proxy nginx-proxy                                                                                                                             docker-compose up -d 
+docker network create --subnet=172.28.0.0/16 --opt com.docker.network.bridge.name=nginx-proxy nginx-proxy
+docker-compose up -d 
 ```
 (or just run install.sh)
 
@@ -105,6 +108,18 @@ docker-compose up -d
 
 image :  https://github.com/coppit/docker-duckdns
 
+### gitea
+
+```
+cd RIG/gitea
+cp exemple.env .env
+#edit the env file to set the different variables
+vi .env
+docker-compose up -d
+```
+
+image : https://hub.docker.com/r/gitea/gitea/
+
 ### go-socks5-proxy
 
 ```
@@ -128,6 +143,28 @@ docker-compose up -d
 ```
 
 image :  https://github.com/linuxserver/Heimdall
+
+### Jekyll
+
+Deploys a jekyll wesite on an nginx server
+
+This setup suppose that :
+- you have a "blog" directory with your jekyll source (before build)
+- you have a volume "from_seafile" taht contains assets for this blog.
+
+If you don't need seafile integration, just remove the volume from the docker-compose and "run docker-compose up -d" instead of deploy.sh.
+
+If you need seafile integration, you will have to replace variables in the dl/entrypoint.sh or create a .env
+
+```
+cd RIG/jekyll
+cp exemple.env .env
+#edit the env file to set the different variables
+vi .env
+./deploy.sh
+```
+
+image : locally builded, FROM the official nginx image
 
 ### nextcloud
 
