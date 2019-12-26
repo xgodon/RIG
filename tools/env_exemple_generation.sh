@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#generates env_exemple files based on .env files for each project
+
 BASE_DIR=$(pwd)
 APPS_DIR="./dockerized-apps"
 

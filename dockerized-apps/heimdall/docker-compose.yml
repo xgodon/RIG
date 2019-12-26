@@ -1,7 +1,7 @@
 version: "3"
 services:
   heimdall:
-    image: linuxserver/heimdall
+    image: linuxserver/heimdall:2.2.2-ls67
     container_name: heimdall
     environment:
       - PUID=1001
@@ -10,7 +10,7 @@ services:
       #- TZ=Europe/London
       - VIRTUAL_HOST=${HOST}
       - LETSENCRYPT_HOST=${HOST}
-      - LETSENCRYPT_EMAIL={EMAIL}
+      - LETSENCRYPT_EMAIL=${EMAIL}
       - VIRTUAL_PORT=443
       - VIRTUAL_PROTO=https
     volumes:

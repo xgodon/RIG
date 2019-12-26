@@ -3,7 +3,7 @@ version: '3.1'
 services:
   web:
     container_name: git
-    image: gitea/gitea:1.7.1
+    image: gitea/gitea:1.10.1
     volumes:
       - data:/data
     ports:
@@ -20,7 +20,7 @@ services:
     networks:
       - nginx-proxy
   db:
-    image: mariadb:10.4.4
+    image: mariadb:10.4.11
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}

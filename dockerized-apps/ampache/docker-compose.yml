@@ -1,7 +1,7 @@
 version: '3'
 services:
         ampache:
-                image: ampache/ampache
+                image: ampache/ampache@sha256:c494d1729b6f219672a725886993f6a7a8888e2e68a375c7f260d72758847b63
                 container_name: ampache
                 environment:
                         VIRTUAL_HOST: ${HOST}

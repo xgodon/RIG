@@ -3,7 +3,7 @@ version: '3'
 services:
         dokuwiki:
                 container_name: dokuwiki
-                image: mprasil/dokuwiki
+                image: mprasil/dokuwiki:2018-04-22b
                 networks:
                         - nginx-proxy
                 ports:

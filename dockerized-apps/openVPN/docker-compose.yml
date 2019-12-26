@@ -3,7 +3,7 @@ services:
         openvpn:
                 cap_add:
                         - NET_ADMIN
-                image: kylemanna/openvpn
+                image: kylemanna/openvpn@sha256:266c52c3df8d257ad348ea1e1ba8f0f371625b898b0eba6e53c785b82f8d897e
                 container_name: openvpn
                 ports:
                         - "${PORT}:1194/udp"

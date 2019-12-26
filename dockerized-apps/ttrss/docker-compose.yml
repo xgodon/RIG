@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+  ttrss:
+    container_name: ttrss
+    image: clue/ttrss
+    ports:
+      - "${PORT}:80"
+    depends_on:
+      - db
+    links:
+      - db:db
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: ${HOST}
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: ${EMAIL}
+      DB_PORT: 5432
+      DB_NAME: ttrss
+      DB_USER: postgres
+      DB_PASS: ${DB_PASSWORD}
+      DB_TYPE: pgsql
+      DB_HOST: db
+    networks:
+      - nginx-proxy
+  db:
+    image: postgres:12.1-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=ttrss
+      #- MYSQL_DATABASE=${MYSQL_DATABASE}
+      #- MYSQL_USER=${MYSQL_USER}
+      #- MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - db/:/var/lib/postgresql/data
+
+    networks:
+      - nginx-proxy
+    
+volumes:
+        db:
+
+
+networks:
+        nginx-proxy:
+                external: true
+

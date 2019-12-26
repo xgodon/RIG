@@ -1,7 +1,7 @@
 version: '3'
 services:
   ss5:
-    image: dijedodol/simple-socks5-server:latest
+    image: dijedodol/simple-socks5-server:1.0.3
     container_name: proxy
     ports:
       - '${PORT}:1080'
