@@ -78,6 +78,10 @@ cd RIG/ampache
 cp exemple.env .env
 #edit the env file to set the different variables
 vi .env
+
+# follow subsonic backend specific instructions if you want to use it
+# https://github.com/ampache/ampache/wiki/API#subsonic-api
+
 docker-compose up -d
 ```
 
