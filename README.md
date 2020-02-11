@@ -222,6 +222,9 @@ vi conf/seahub_settings.py
 
 image :  https://hub.docker.com/r/seafileltd/seafile
 
+if "Contradictory scheme headers", follow
+https://github.com/haiwen/seafile-docker/issues/91#issuecomment-418302111
+
 ### simple-socks5-server
 
 
