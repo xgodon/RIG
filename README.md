@@ -33,7 +33,8 @@ TO COME SOON :
 - torrent.csv 
 
 TODO : 
-- remove all latest tag for named tags, cf : https://vsupalov.com/docker-latest-tag/
+- proper seafile setup
+- proper ampache setup
 
 ## BACKUPS
 
@@ -242,3 +243,6 @@ image : https://hub.docker.com/r/dijedodol/simple-socks5-server/
 
 WIP
 
+## Good practices
+
+- never use latest tag, cf : https://vsupalov.com/docker-latest-tag/
