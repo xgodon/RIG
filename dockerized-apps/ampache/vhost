@@ -1,0 +1,29 @@
+if ( !-d $request_filename ) {
+  rewrite ^/rest/(.*)\.view$ /rest/index.php?action=$1 last;
+}
+
+rewrite ^/play/ssid/(.*)/type/(.*)/oid/([0-9]+)/uid/([0-9]+)/client/(.*)/noscrobble/([0-1])/player/(.*)/name/(.*)$ /play/index.php?ssid=$1&type=$2&oid=$3&uid=$4&client=$5&noscrobble=$6&player=$7&name=$8 last;
+rewrite ^/play/ssid/(.*)/type/(.*)/oid/([0-9]+)/uid/([0-9]+)/client/(.*)/noscrobble/([0-1])/bitrate/([0-9]+)/player/(.*)/name/(.*)$ /play/index.php?ssid=$1&type=$2&oid=$3&uid=$4&client=$5&noscrobble=$6&bitrate=$7player=$8&name=$9 last;
+rewrite ^/play/ssid/(.*)/type/(.*)/oid/([0-9]+)/uid/([0-9]+)/client/(.*)/noscrobble/([0-1])/transcode_to/(w+)/bitrate/([0-9]+)/player/(.*)/name/(.*)$ /play/index.php?ssid=$1&type=$2&oid=$3&uid=$4&client=$5&noscrobble=$6&transcode_to=$7&bitrate=$8&player=$9&name=$10 last;
+
+# The following line necessary for me to be able to download single songs
+rewrite ^/play/ssid/(.*)/type/(.*)/oid/([0-9]+)/uid/([0-9]+)/action/(.*)/name/(.*)$ /play/index.php?ssid=$1&type=$2&oid=$3&uid=$4action=$5&name=$6 last;
+
+# used for transfering art work to some clients, seems not to work for clementine because of an clementine-internal issue
+location /play {
+         if (!-e $request_filename) {
+             rewrite ^/play/art/([^/]+)/([^/]+)/([0-9]+)/thumb([0-9]*)\.([a-z]+)$ /image.php?object_type=$2&object_id=$3&auth=$1;
+             break;
+         }
+         rewrite ^/([^/]+)/([^/]+)(/.*)?$ /play/$3?$1=$2;
+         rewrite ^/(/[^/]+|[^/]+/|/?)$ /play/index.php last;
+         #break;
+         proxy_pass http://music.nerka.duckdns.org;
+}
+
+location /rest {
+         limit_except GET POST {
+         deny all;
+         }
+         proxy_pass http://music.nerka.duckdns.org;
+}

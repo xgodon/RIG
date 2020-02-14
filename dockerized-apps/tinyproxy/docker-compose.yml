@@ -1,0 +1,20 @@
+version: '3'
+services:
+        openvpn:
+                image: dannydirect/tinyproxy:latest 
+                container_name: tinyp
+                restart: unless-stopped
+                command: ANY
+                networks:
+                        - nginx-proxy
+                ports:
+                        - 8053:8888
+                restart: unless-stopped
+                environment:
+                        VIRTUAL_HOST: ${HOST}
+                        LETSENCRYPT_HOST: ${HOST}
+                        LETSENCRYPT_EMAIL: ${EMAIL}
+networks:
+        nginx-proxy:
+                external: true
+
