@@ -3,7 +3,7 @@ version: '3'
 services:
         dokuwiki:
                 container_name: dokuwiki
-                image: mprasil/dokuwiki:2018-04-22b
+                image: linuxserver/dokuwiki:version-2022-07-31a
                 networks:
                         - nginx-proxy
                 ports:
@@ -14,11 +14,11 @@ services:
                         LETSENCRYPT_HOST: ${HOST}
                         LETSENCRYPT_EMAIL: ${EMAIL}
                 volumes:
-                        - dokuwiki_data:/dokuwiki/data
-                        - dokuwiki_conf:/dokuwiki/conf
-                        - dokuwiki_plugins:/dokuwiki/lib/plugins
-                        - dokuwiki_tpl:/dokuwiki/lib/tpl
-                        - dokuwiki_logs:/var/log
+                        - dokuwiki_data:/config/dokuwiki/data
+                        - dokuwiki_conf:/config/dokuwiki/conf
+                        - dokuwiki_plugins:/config/dokuwiki/lib/plugins
+                        - dokuwiki_tpl:/config/dokuwiki/lib/tpl
+                        # - dokuwiki_logs:/var/log
 networks:
         nginx-proxy:
                 external: true
