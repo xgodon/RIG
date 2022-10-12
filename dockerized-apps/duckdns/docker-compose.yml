@@ -1,7 +1,7 @@
 version: "3"
 services:
     duckdns:
-      image: linuxserver/duckdns:503cba06-ls37
+      image: linuxserver/duckdns:version-b77052f0
       container_name: duckdns
       environment:
         SUBDOMAINS: ${HOST}
