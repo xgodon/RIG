@@ -86,7 +86,8 @@ vi .env
 docker-compose up -d
 ```
 
-repo :  https://github.com/ampache/ampache-docker
+repo :  https://github.com/ampache/ampache-docker \
+Caracter set problem : https://github.com/ampache/ampache/issues/140
 
 ### dokuwiki
 
