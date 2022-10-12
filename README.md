@@ -247,3 +247,15 @@ WIP
 ## Good practices
 
 - never use latest tag, cf : https://vsupalov.com/docker-latest-tag/
+
+
+## NOTES
+
+reverse proxy options :
+- letsencrypt-nginx-proxy-companion + docker-gen + nginx 
+    - :( template may be deprecated security wise
+    - :) ssh and https on 443
+- caddy 
+- Traefik 
+- linuxserver.io's swag docker container
+

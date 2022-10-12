@@ -1,9 +1,14 @@
 #!/bin/bash
+# usage : 
+# 	- save_apps.sh 
+# 	- save_apps.sh $DESTINATION
 
-DESTINATION="${1-/backups/manual/volumes}"
+# If there is an arg, use it, else use /backups/manual/${startdate_time}
 vol_path="/var/lib/docker/volumes"
 BASE_DIR=$(pwd)
 APPS_DIR="./dockerized-apps"
+start=$(date '+%Y-%m-%d_%H-%M-%S')
+DESTINATION="${1-/backups/manual/${start}}"
 
 
 mkdir -p $DESTINATION
